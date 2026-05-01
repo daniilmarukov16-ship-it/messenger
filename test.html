@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Supabase</title></head>
+<body>
+<h1>Test Supabase Import</h1>
+<div id="result">Testing...</div>
+<script type="module">
+  import { createClient } from '@supabase/supabase-js';
+  const resultDiv = document.getElementById('result');
+  if (typeof createClient === 'function') {
+    resultDiv.innerHTML = '✅ createClient работает! Supabase готов к использованию.';
+    resultDiv.style.color = 'green';
+  } else {
+    resultDiv.innerHTML = '❌ createClient НЕ работает. Проблема с установкой.';
+    resultDiv.style.color = 'red';
+  }
+  console.log('createClient type:', typeof createClient);
+</script>
+</body>
+</html>
