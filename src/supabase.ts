@@ -6,7 +6,7 @@ const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export const register = async (login: string, password: string, name: string) => {
-  const autoEmail = `${login}@meet.local`;
+  const autoEmail = `${login}@temp-mail.org`;
   const { data, error } = await supabase.auth.signUp({
     email: autoEmail,
     password: password,
@@ -33,7 +33,7 @@ export const login = async (identifier: string, password: string) => {
       .eq('login', identifier)
       .single();
     if (!user) throw new Error('Пользователь не найден');
-    email = `${identifier}@meet.local`;
+    email = `${identifier}@temp-mail.org`;
   }
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) throw error;
